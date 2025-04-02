@@ -37,13 +37,24 @@ function moveDodgerDown() {
 }
 
 document.addEventListener("keydown", function (e) {
-  if (e.key === "ArrowLeft") {
-    moveDodgerLeft();
-  } else if (e.key === "ArrowRight") {
-    moveDodgerRight();
-  } else if (e.key === "ArrowUp") {
-    moveDodgerUp();
-  } else if (e.key === "ArrowDown") {
-    moveDodgerDown();
-  }
-});
+    if (e.key === "ArrowLeft") {
+      moveDodgerLeft();
+      playSoundOnMovement(); // spiller lyden når der flyttes til venstre
+    } else if (e.key === "ArrowRight") {
+      moveDodgerRight();
+      playSoundOnMovement(); // spiller lyden når der flyttes til højre
+    } else if (e.key === "ArrowUp") {
+      moveDodgerUp();
+      playSoundOnMovement(); // spiller lyden når der flyttes op
+    } else if (e.key === "ArrowDown") {
+      moveDodgerDown();
+      playSoundOnMovement(); // spiller lyden når der flyttes ned
+    }
+  });
+
+const movementSound = document.getElementById("movementSound");
+
+function playSoundOnMovement() {
+  movementSound.currentTime = 0; // Sætter lyden tilbage til starten
+  movementSound.play(); // Spiller lyden
+}
