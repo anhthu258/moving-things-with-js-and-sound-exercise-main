@@ -26,7 +26,7 @@ function moveDodgerUp() {
   const bottomNumbers = dodger.style.bottom.replace("px", "");
   const bottom = parseInt(bottomNumbers, 10);
 
-  if (bottom < 380) { // Limiter dodger til at ikke at flytte ud af containeren
+  if (bottom < 360) { // Limiter dodger til at ikke at flytte ud af containeren
     dodger.style.bottom = `${bottom + 10}px`; // Flytter dodger 10px oppe
   }  else {
     playGameOverSound(); // spiller gameover lyden når dodgeren rammer top væg
@@ -72,3 +72,19 @@ function playGameOverSound() {
   gameoverSound.currentTime = 0; // Sætter lyden tilbage til starten
   gameoverSound.play(); // Spiller lyden
 }
+
+function setDodgerToMiddle() {
+    const containerWidth = 400;
+    const containerHeight = 400;
+    const dodgerHeight = 40;
+  
+    // beregner midten positionen
+    const middleLeft = (containerWidth - dodgerWidth) / 2;
+    const middleBottom = (containerHeight - dodgerHeight) / 2;
+  
+    // konfigurer dodgerens position
+    dodger.style.left = `${middleLeft}px`;
+    dodger.style.bottom = `${middleBottom}px`;
+  }
+
+  setDodgerToMiddle();
