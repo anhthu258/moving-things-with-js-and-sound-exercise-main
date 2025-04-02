@@ -6,6 +6,8 @@ function moveDodgerLeft() {
 
   if (left > 0) {
     dodger.style.left = `${left - 10}px`; // Flytter dodger 10px til venstre
+  } else {
+    playGameOverSound(); // spiller gameover lyden når dodgeren rammer venstre væg
   }
 }
 
@@ -15,7 +17,9 @@ function moveDodgerRight() {
 
   if (left < 360) { // Påstår containerens bredde er 400px da dodgerens bredde er 40px, dette limit dodger til at ikke at flytte ud af containeren
     dodger.style.left = `${left + 10}px`; // Flytte dodgeren 10px til højre
-  }
+  } else {
+    playGameOverSound(); // spiller gameover lyden når dodgeren rammer højre væg
+}
 }
 
 function moveDodgerUp() {
@@ -24,7 +28,9 @@ function moveDodgerUp() {
 
   if (bottom < 380) { // Limiter dodger til at ikke at flytte ud af containeren
     dodger.style.bottom = `${bottom + 10}px`; // Flytter dodger 10px oppe
-  }
+  }  else {
+    playGameOverSound(); // spiller gameover lyden når dodgeren rammer top væg
+}
 }
 
 function moveDodgerDown() {
@@ -33,7 +39,9 @@ function moveDodgerDown() {
 
   if (bottom > 0) {
     dodger.style.bottom = `${bottom - 10}px`; // Flyttere dodger 10px ned
-  }
+  }  else {
+    playGameOverSound(); // spiller gameover lyden når dodgeren rammer bunden
+}
 }
 
 document.addEventListener("keydown", function (e) {
@@ -57,4 +65,10 @@ const movementSound = document.getElementById("movementSound");
 function playSoundOnMovement() {
   movementSound.currentTime = 0; // Sætter lyden tilbage til starten
   movementSound.play(); // Spiller lyden
+}
+
+const gameoverSound = document.getElementById("gameoverSound");
+function playGameOverSound() {
+  gameoverSound.currentTime = 0; // Sætter lyden tilbage til starten
+  gameoverSound.play(); // Spiller lyden
 }
